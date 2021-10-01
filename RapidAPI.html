@@ -1,0 +1,54 @@
+<script type="text/javascript">
+    RED.nodes.registerType('RapidAPI',{
+        category: 'function',
+        color: '#a6bbcf',
+        defaults: {
+            name: {value:""},
+            url: {value:"https://co2-offset.p.rapidapi.com/rapidapi/compensate"},
+            method: {value:"GET"}
+        },
+        credentials: {
+          host: {type:"text"},
+          key: {type:"password"}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "file.png",
+        label: function() {
+            return this.name||"RapidAPI Consumer";
+        }
+    });
+</script>
+
+<script type="text/html" data-template-name="RapidAPI">
+  <div class="form-row">
+      <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+      <input type="text" id="node-input-name" placeholder="Name">
+  </div>
+    <div class="form-row">
+        <label for="node-input-url"><i class="fa fa-tag"></i> URL</label>
+        <input type="text" id="node-input-url" placeholder="Format: https://SOMETHING.rapidapi.com/API/METHOD">
+    </div>
+    <div class="form-row">
+        <label for="node-input-method"><i class="fa fa-tag"></i> HTTP-Method</label>
+        <select id="node-input-method">
+            <option>GET</option>
+            <option>POST</option>
+        </select>
+    </div>
+    <div class="form-row">
+        <label for="node-input-host"><i class="fa fa-tag"></i> rapidapi-host</label>
+        <input type="text" id="node-input-host">
+    </div>
+    <div class="form-row">
+        <label for="node-input-key"><i class="fa fa-tag"></i> rapidapi-key</label>
+        <input type="password" id="node-input-key">
+    </div>
+</script>
+
+<script type="text/html" data-help-name="RapidAPI">
+    <p>Allows to access an API from RapidAPI to use results as <code>msg.payload</code>.</p>
+    <p>This Node was developped to automate co2 compensation directly using the
+      <a href="https://https://rapidapi.com/stromdao-stromdao-default/api/co2-offset/" target="_blank">CO2 Offset API</a>
+    </p>
+</script>
