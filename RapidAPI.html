@@ -4,8 +4,9 @@
         color: '#a6bbcf',
         defaults: {
             name: {value:""},
-            url: {value:"https://co2-offset.p.rapidapi.com/rapidapi/compensate"},
-            method: {value:"GET"}
+            account: {required:true, type:"rapidapi-config"},
+            url: {required:true,value:"https://co2-offset.p.rapidapi.com/rapidapi/compensate"},
+            method: {required:true,value:"GET"}
         },
         credentials: {
           host: {type:"text"},
@@ -25,6 +26,10 @@
       <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
       <input type="text" id="node-input-name" placeholder="Name">
   </div>
+  <div class="form-row">
+      <label for="node-input-account"><i class="fa fa-key"></i>RapidAPI Credentials</label>
+      <input type="text" id="node-input-account">
+  </div>
     <div class="form-row">
         <label for="node-input-url"><i class="fa fa-tag"></i> URL</label>
         <input type="text" id="node-input-url" placeholder="Format: https://SOMETHING.rapidapi.com/API/METHOD">
@@ -36,14 +41,6 @@
             <option>POST</option>
         </select>
     </div>
-    <div class="form-row">
-        <label for="node-input-host"><i class="fa fa-tag"></i> rapidapi-host</label>
-        <input type="text" id="node-input-host">
-    </div>
-    <div class="form-row">
-        <label for="node-input-key"><i class="fa fa-tag"></i> rapidapi-key</label>
-        <input type="password" id="node-input-key">
-    </div>
 </script>
 
 <script type="text/html" data-help-name="RapidAPI">
@@ -51,4 +48,38 @@
     <p>This Node was developped to automate co2 compensation directly using the
       <a href="https://https://rapidapi.com/stromdao-stromdao-default/api/co2-offset/" target="_blank">CO2 Offset API</a>
     </p>
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType('rapidapi-config',{
+        category: 'config',
+        defaults: {
+             name: {
+               value: "",
+               required: false
+             }
+        },
+        credentials: {
+             host: {type: "text"},
+             key: {type: "password"}
+         },
+        label: function() {
+            return this.name ? this.name : "Rapid API Credentials";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="rapidapi-config">
+  <div class="form-row">
+    <label for="node-config-input-name"><i class="fa fa-tag"></i> <span data-i18n="node-red:common.label.name"></span></label>
+    <input type="text" id="node-config-input-name">
+  </div>
+    <div class="form-row">
+      <label for="node-config-input-host"><i class="fa fa-user"></i> Host</label>
+      <input type="text" id="node-config-input-host">
+    </div>
+    <div class="form-row">
+        <label for="node-config-input-key"><i class="fa fa-lock"></i> Key</label>
+        <input type="password" id="node-config-input-key">
+    </div>
 </script>
