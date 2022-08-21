@@ -26,6 +26,13 @@ module.exports = function(RED) {
               },
               data: msg.payload
           };
+          if(config.method == "GET") {
+            delete options.data;
+            options.url += '?';
+            for (const [key, value] of Object.entries(msg.payload)) {
+              options.url += "&"+key+"="+encodeURIComponent(value);
+            }
+          }
           axios.request(options).then(function (response) {
               msg.payload = response.data;
               node.send(msg)

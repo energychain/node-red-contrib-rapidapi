@@ -1,6 +1,6 @@
 {
   "name": "node-red-contrib-rapidapi",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Node for Node-Red to embed an API from RapidAPI ",
   "main": "Rapidapi.js",
   "scripts": {
