@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/energychain/node-red-contrib-rapidapi#readme",
   "dependencies": {
-    "axios": "^0.22.0"
+    "axios": "^1.6.0"
   },
   "node-red": {
     "nodes": {
